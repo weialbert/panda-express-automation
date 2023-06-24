@@ -2,6 +2,9 @@ import os
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
+
 
 # define helper function to click on next button
 def click_next(driver):
@@ -11,17 +14,13 @@ def click_next(driver):
 def setup():
     # Get user input
     user_input = '4yJ9kG8E2TnS1cN0D3W5A7'
-    user_email = input('Enter your email address:')
+    user_email = input('Enter your email address: ')
 
     # Create the path to the 'chrome-driver' folder
     current_path = os.path.dirname(__file__)
-    chrome_driver_path = os.path.join(current_path, 'chrome-driver')
-
-    # Navigate to chrome driver path
-    os.chdir(chrome_driver_path) 
 
     # Set up ChromeDriver
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 
     # Navigate to the Panda Express survey website
     driver.get('https://www.pandaexpress.com/feedback')
