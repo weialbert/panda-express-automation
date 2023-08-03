@@ -3,6 +3,7 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
 
@@ -20,7 +21,10 @@ def setup():
     current_path = os.path.dirname(__file__)
 
     # Set up ChromeDriver
-    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+    
+    options = Options()
+    options.add_argument("start-maximized")
+    driver = webdriver.Chrome(options=options)
 
     # Navigate to the Panda Express survey website
     driver.get('https://www.pandaexpress.com/feedback')
