@@ -31,7 +31,7 @@ def setup():
     for i in range(3):
         click_next(driver)
 
-    return driver, user_email       
+    return driver, user_email
 
 def fill_survey(email_addr, driver):
     # See if there is a next button available
@@ -40,7 +40,7 @@ def fill_survey(email_addr, driver):
     while len(nextLink) != 0:
         # Find options
         optionButton = driver.find_elements(By.CLASS_NAME, "radioSimpleInput")
-        
+
         # Find Email prompt
         email = driver.find_elements(By.NAME, "S000057")
         if len(email) != 0:
