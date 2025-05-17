@@ -1,8 +1,9 @@
 import os
 import time
 from selenium import webdriver
-from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.by import By
 
 # define helper function to click on next button
 def click_next(driver):
@@ -15,7 +16,7 @@ def setup():
     user_email = input('Enter your email address: ')
 
     # Set up ChromeDriver
-    service = ChromeService()
+    service = ChromeService(ChromeDriverManager().install())
     options = webdriver.ChromeOptions()
     driver = webdriver.Chrome(service=service, options=options)
 
